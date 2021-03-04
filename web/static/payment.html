@@ -1,0 +1,52 @@
+<!-- payment template -->
+<div class="light-modal" id="payment-message" role="dialog" aria-labelledby="light-modal-label" aria-hidden="false">
+    <div class="light-modal-content animated rotateIn">
+        <div class="light-modal-body">
+            <a href="#" class="light-modal-close-icon" onclick="$('#payment-message').toggleClass('open'); return false;" aria-label="close">&times;</a>
+            {{ data.message }}
+        </div>
+    </div>
+</div>
+
+<div class="payment">
+    <div class="centre">
+        <h1>Review Your Order</h1>
+        <img src="/media/green_cart.svg" alt="Shopping Trolley"/>
+    </div>
+    <div ng-if="data.cart.total != 0">
+        <table>
+            <tr>
+                <th>QTY</th>
+                <th>Name</th>
+                <th>Sub Total</th>
+            </tr>
+            <tr ng-repeat="item in data.cart.items">
+                <td>{{ item.qty }}</td>
+                <td>{{ item.name }}</td>
+                <td class="currency">&euro;{{ item.subtotal.toFixed(2) }}</td>
+            </tr>
+            <tr>
+                <td colspan="3">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Inc Tax</td>
+                <td class="currency">&euro;{{ data.cart.tax.toFixed(2) }}</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Total</td>
+                <td class="currency">&euro;{{ data.cart.total.toFixed(2) }}</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button class="confirm-shipping" ng-disabled="data.buttonDisabled" onclick="$('#payment-message').toggleClass('open'); return false;" ng-click="pay();">Pay Now</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div ng-if="data.cont">
+        Thank you for your order
+        <a class="cont" href="/">Continue shopping</a>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<!-- login / register -->
+<div class="light-modal" id="sign-up-message" role="dialog" aria-labelledby="light-modal-label" aria-hidden="false">
+    <div class="light-modal-content animated rotateIn">
+        <div class="light-modal-body">
+            <a href="#" class="light-modal-close-icon" onclick="$('#sign-up-message').toggleClass('open'); return false;" aria-label="close">&times;</a>
+            {{ data.message }}
+        </div>
+    </div>
+</div>
+
+<div>
+    <div ng-if="data.user.name === undefined">
+        <table class="credentials centre">
+            <tr>
+                <td><img src="/media/merchandise_shop.svg" class="logo" alt="nuaware merchandise shop"/></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-gap" placeholder="Name" size="20" ng-model="data.name"/></td>
+            </tr>
+            <tr>
+                <td><input type="email" class="form-gap" placeholder="Email" size="20" ng-model="data.email"/></td>
+            </tr>
+            <tr>
+                <td><input type="password" class="form-gap" placeholder="Password" size="20" ng-model="data.password"/></td>
+            </tr>
+            <tr>
+                <td><input type="password" placeholder="Confirm Password" size="20" ng-model="data.password2"/></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="centre"><button class="login" onclick="$('#sign-up-message').toggleClass('open'); return false;" ng-click="register();">Sign up</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
